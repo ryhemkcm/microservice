@@ -1,0 +1,53 @@
+syntax = "proto3";
+package commande;
+
+message Commande {
+  string id = 1;
+  string nom = 2;
+  string contact = 3;
+  string adresse = 4;
+}
+
+message GetCommandeRequest {
+  string commande_id = 1;
+}
+
+message GetCommandeResponse {
+  Commande commande = 1;
+}
+
+message CreateCommandeRequest {
+  string nom = 1;
+  string contact = 2;
+  string adresse = 3;
+}
+
+message CreateCommandeResponse {
+  Commande commande = 1;
+}
+
+message DeleteCommandeRequest {
+  string commande_id = 1;
+}
+
+message DeleteCommandeResponse {
+  string message = 1;
+}
+
+message UpdateCommandeRequest {
+  string commande_id = 1;
+  string nom = 2;
+  string contact = 3;
+  string adresse = 4;
+}
+
+message UpdateCommandeResponse {
+  Commande commande = 1;
+}
+
+service CommandeService {
+  rpc GetCommande(GetCommandeRequest) returns (GetCommandeResponse);
+  rpc CreateCommande(CreateCommandeRequest) returns (CreateCommandeResponse);
+  rpc DeleteCommande(DeleteCommandeRequest) returns (DeleteCommandeResponse);
+  rpc UpdateCommande(UpdateCommandeRequest) returns (UpdateCommandeResponse);
+}
